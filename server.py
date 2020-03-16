@@ -18,6 +18,13 @@ class SpacyCoreNlp(Resource):
 
         return relations
 
+        def ner(self):
+        query = request.data.decode(request.charset)
+        doc = nlp(text) 
+
+        return doc.ents
+
+
 
 
 api.add_resource(SpacyCoreNlp, '/core-nlp')
