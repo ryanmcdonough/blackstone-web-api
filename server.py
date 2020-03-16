@@ -9,15 +9,18 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class SpacyCoreNlp(Resource):
-        def ner(self):
-                query = request.data.decode(request.charset)
+class NerNlp(Resource):
+        def post(self):
+                
+                req_data = request.get_json()
+                text = req_data['text']
+                
                 doc = nlp(text) 
 
                 return doc.ents
 
 
-api.add_resource(SpacyCoreNlp, '/core-nlp')
+api.add_resource(NerNlp, '/ner')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
