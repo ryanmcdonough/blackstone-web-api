@@ -11,13 +11,6 @@ api = Api(app)
 
 
 class SpacyCoreNlp(Resource):
-        def legislation(self):
-                query = request.data.decode(request.charset)
-                doc = nlp(text) 
-                relations = extract_legislation_relations(doc)
-
-                return relations
-
         def ner(self):
                 query = request.data.decode(request.charset)
                 doc = nlp(text) 
