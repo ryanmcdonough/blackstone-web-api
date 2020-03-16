@@ -2,7 +2,6 @@ import os
 import spacy
 from flask import Flask, request
 from flask_restful import Resource, Api
-from blackstone.legislation_linker import extract_legislation_relations
 
 nlp = spacy.load("en_blackstone_proto")
 
