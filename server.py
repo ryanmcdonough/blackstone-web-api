@@ -1,6 +1,6 @@
 import os
 import spacy
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 
 nlp = spacy.load("en_blackstone_proto")
@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Api(app)
 
 @app.route('/ner', methods=['POST'])
-def ner(self):
+def ner():
     req_data = request.get_json()
     text = req_data['text']
                 
@@ -18,7 +18,7 @@ def ner(self):
     return doc.ents
 
 @app.route("/test")
-def test(self):
+def test():
     req_data = request.get_json()
     text = req_data['text']
                 
