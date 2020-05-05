@@ -1,7 +1,7 @@
 import os
 import jsonpickle
 import spacy
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from blackstone.utils.legislation_linker import extract_legislation_relations
 from Legislation import Legislation
