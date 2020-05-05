@@ -5,7 +5,7 @@ import spacy
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from blackstone.utils.legislation_linker import extract_legislation_relations
-import Legislation
+from .Legislation import Legislation
 
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
