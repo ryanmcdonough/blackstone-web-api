@@ -1,18 +1,11 @@
 import os
 import sys
-
-PACKAGE_PARENT = '..'
-SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
-
 import jsonpickle
 import spacy
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from blackstone.utils.legislation_linker import extract_legislation_relations
 from Legislation import Legislation
-
-
 
 nlp = spacy.load("en_blackstone_proto")
 
@@ -44,4 +37,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=4449)
+       app.run(host='0.0.0.0', port=4449)
