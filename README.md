@@ -54,7 +54,7 @@ The API will return a JSON response with the following structure:
 ```json
 
 {
-  "data": [{"text":  "Some identified text", "label":  "CASENAME" ]
+  "data": [{"text":  "Some identified text", "label":  "CASENAME" }]
 }
 
 ```
