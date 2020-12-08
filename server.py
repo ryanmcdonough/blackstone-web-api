@@ -6,6 +6,8 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from blackstone.utils.legislation_linker import extract_legislation_relations
 from Legislation import Legislation
+from Entity import Entity
+
 
 nlp = spacy.load("en_blackstone_proto")
 
@@ -39,7 +41,7 @@ def ner():
 
     for text, label_ in doc.ents:
         entities.append(Entity(text,label_))
-        
+
     return jsonpickle.encode(entities, unpicklable=False)
 
 
