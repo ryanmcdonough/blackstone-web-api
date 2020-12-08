@@ -17,9 +17,16 @@ which by default is running on port 4449 at http://localhost:4449.
 
 ## Running precompiled image
 
-You can also run this 
+You can also pull and run this docker image from Docker Hub:
 
-## Routes
+```docker pull ryanmcdonough/blackstone-api```
+
+followed by
+
+```docker run -p 4449:4449 ryanmcdonough/blackstone-api```
+
+
+## Endpoint
 
 All of the below endpoints accept a POST request with a JSON body that includes a "text" property. 
 
@@ -29,7 +36,7 @@ All of the below endpoints accept a POST request with a JSON body that includes 
 }
 ```
 
-### /entities
+### /ner
 
 The NER component of the Blackstone model has been trained to detect the following entity types:
 
@@ -48,6 +55,22 @@ The API will return a JSON response with the following structure:
 
 {
   "data": [{"text":  "Some identified text", "label":  "CASENAME" ]
+}
+
+```
+
+### /legislation
+
+Blackstone's Legislation Linker attempts to couple a reference to a PROVISION to it's parent INSTRUMENT by using the NER model to identify the presence of an INSTRUMENT and then navigating the dependency tree to identify the child provision.
+
+Once Blackstone has identified a PROVISION:INSTRUMENT pair, it will attempt to generate target URLs to both the provision and the instrument on legislation.gov.uk.
+
+The API will return a JSON response with the following structure: 
+
+```json
+
+{
+  "data": [{"provision":  "Some provision found", "provision_url":  "http://www.link.to/legislation", "instrument": "Some provision found", "instrument_url" : "https://www.link.to/legislation  ]
 }
 
 ```
