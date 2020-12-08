@@ -29,6 +29,20 @@ def ner():
     return jsonpickle.encode(legislations, unpicklable=False)
 
 
+@app.route('/ner', methods=['POST'])
+def ner():
+    req_data = request.get_json()
+    text = req_data['text']
+                
+    doc = nlp(text) 
+    entities = []
+
+    for text, label_ in doc.ents:
+        entities.append(Entity(text,label_))
+        
+    return jsonpickle.encode(entities, unpicklable=False)
+
+
 @app.route('/status')
 def hello():
     # Render the page
